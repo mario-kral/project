@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 //use phpDocumentor\Reflection\Project;
 use App\Project;
 
-class ProjectsControler extends Controller
+class ProjectsController extends Controller
 {
     public function index()
     {
