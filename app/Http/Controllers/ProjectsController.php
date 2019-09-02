@@ -21,6 +21,26 @@ class ProjectsController extends Controller
         return view('projects.create');
     }
 
+    public function show()
+    {
+
+    }
+
+    public function edit()
+    {
+
+    }
+
+    public function update()
+    {
+
+    }
+
+    public function destroy()
+    {
+
+    }
+
     public function store()
     {
         $project = new Project();
@@ -30,20 +50,4 @@ class ProjectsController extends Controller
         return redirect('/projects');
     }
 
-    public function home()
-    {
-        return view('welcome', [
-        'foo' => 'foobar'
-        ]);
-    }
-
-    public function about()
-    {
-        return view('about');
-    }
-
-    public function contact()
-    {
-       return view('contact');
-    }
 }
