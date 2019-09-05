@@ -21,39 +21,61 @@ class ProjectsController extends Controller
         return view('projects.create');
     }
 
-    public function show()
+    public function show(Project $project)
     {
-
+        return view('projects.show', compact('project'));
     }
 
-    public function edit($id)
+    public function edit(Project $project)
     {
-        $project = Project::findOrFail($id);
         return view('projects.edit', compact('project'));
     }
 
-    public function update($id)
+    public function update(Project $project)
     {
-        // dd(request()->all()); - dd functions shows quickly if the code works
-        $project = Project::findOrFail($id);
-        $project->title = request('title');
+        $project->update(\request(['title','description'])); //this is equivalent of the code below
+/*      $project->title = request('title');
         $project->description = request('description');
         $project->save();
+*/
         return redirect('/projects');
     }
 
-    public function destroy($id)
+    public function destroy(Project $project)
     {
-        Project::findOrFail($id)->delete();
+        $project->delete();
         return redirect('/projects');
     }
 
     public function store()
     {
-        $project = new Project();
-        $project->title = request('title');
-        $project->description = request('description');
-        $project->save();
+        Project::create(request(['title','description']));
         return redirect('/projects');
+        /*
+                dd(\request()->all()); // returns all
+                dd(\request(['title','description'])); // returns array with the key ('\request' and 'request' is the same)
+                dd(\request(['title'])); // returns array with the key properly set ('\request' and 'request' is the same)
+                dd(request('title')); //returs variable
+                dd(['title','description']) ; // returns array
+                dd([ // returns array
+                    'title' => request('title'),
+                    'description' => request('description')
+                ]);
+                return [ // returns array in json format
+                    'title' => request('title'),
+                    'description' => request('description')
+                ];
+
+                Project::create([ // this is simpler version of commented out code below
+                    'title' => request('title'),
+                    'description' => request('description')
+                ]);
+
+                $project = new Project();
+                $project->title = request('title');
+                $project->description = request('description');
+                $project->save();
+                return redirect('/projects');
+         */
     }
 }
