@@ -19,7 +19,6 @@
         <div class="field">
             <div class="control">
                 <button type="submit" class="button is-link">Update Project</button>
-
             </div>
         </div>
     </form>
