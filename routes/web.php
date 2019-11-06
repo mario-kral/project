@@ -25,7 +25,9 @@ Route::get('/', 'PagesController@home');
 Route::get('/contact', 'PagesController@contact');
 Route::get('/about', 'PagesController@about');
 Route::resource ('/projects', 'ProjectsController');    // resource je shortcut pre vsetky routes (create, show, store...)
+Route::post('/projects/{project}/tasks/', 'ProjectTasksController@store');
 Route::patch('/tasks/{task}', 'ProjectTasksController@update');
+
 /*
 Route::get('/projects', 'ProjectsControler@index');
 Route::get('/projects/create', 'ProjectsControler@create');
